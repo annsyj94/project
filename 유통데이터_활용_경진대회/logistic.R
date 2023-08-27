@@ -63,8 +63,6 @@ ggplot(value_counts_df, aes(x = AgeDivided, y = Count, fill = Gender)) +
 
 
 
-
-
 # pie chart
 
 
@@ -120,51 +118,7 @@ ggplot(retail_counts_df, aes(x = "", y = Percentage, fill = Category)) +
 
 
 write.csv(purchase, file = "fixed_purchase.csv")
-
-
-
-
-##lineplot 
-twentyone <- purchase %>% filter(year(PurchaseDate) == 2021)
-twentytwo <- purchase %>% filter(year(PurchaseDate) == 2022)
-twentythree<-purchase %>% filter(year(PurchaseDate) == 2023)
-
-
-twentyone_select <- twentyone %>% select(PurchaseDate,Price)
-twentytwo_select <- twentytwo %>% select(PurchaseDate,Price)
-twentythree_select <- twentythree %>% select(PurchaseDate,Price)
-
-
-grouped_one <-twentyone_select %>% 
-  group_by(PurchaseDate) %>%
-  summarize(total_value = sum(Price))
-
-grouped_two<-twentytwo_select %>% 
-  group_by(PurchaseDate) %>%
-  summarize(total_value = sum(Price))
-
-grouped_three<-twentythree_select %>% 
-  group_by(PurchaseDate) %>%
-  summarize(total_value = sum(Price))
-
-ts_plot(grouped_one,
-        title = "2021년 유통 소비",
-        Xtitle = "날짜",
-        color = "orange",
-        Ytitle = "총 소비자 가격")
-
-
-ts_plot(grouped_three,
-        title = "2023년 유통 소비",
-        Xtitle = "날짜",
-        color = "darkgreen",
-        Ytitle = "총 소비자 가격")
-
-ts_plot(grouped_two,
-        title = "2022년 유통 소비",
-        Xtitle = "날짜",
-        color = "navyblue",
-        Ytitle = "총 소비자 가격")
+)
 
 
 
